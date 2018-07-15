@@ -1,7 +1,7 @@
 // JavaBase64Demo1.java
-import javax.crypto.*;
-import java.security.*;
+
 import java.util.Base64;
+import java.util.HashMap;
 
 class JavaBase64Demo1{
 	public static final String _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
@@ -16,6 +16,7 @@ class JavaBase64Demo1{
 		String strStdEncrypt = JavaBase64Demo1.b64encoder.encodeToString( data );
 		String strStdDecrypt = new String( JavaBase64Demo1.b64decoder.decode( strStdEncrypt ), "UTF-8" );
 		String strUserEncrypt = JavaBase64Demo1.Base64Encode(strSource);
+		String strUserDecrypt = JavaBase64Demo1.Base64Decode(strUserEncrypt);
 
 		log(strSource);
 
@@ -23,6 +24,8 @@ class JavaBase64Demo1{
 		log( "strStdDecrypt:\n" + strStdDecrypt );
 
 		log( "strUserEncrypt:\n" + strUserEncrypt );
+		log( "strUserDecrypt:\n" + strUserDecrypt );
+
 	}
 
 	public static byte[] getBytes(String s){
@@ -65,6 +68,33 @@ class JavaBase64Demo1{
 		return sb.toString();
 	}
 
+	public static String Base64Decode(String s) throws Exception{
+		int i = 0, n = 0, nCount = s.length();
+		int chr1 = 0, chr2 = 0, chr3 = 0;
+		int enc1 = 0, enc2 = 0, enc3 = 0, enc4 = 0;
+		byte[] cache = new byte[nCount * 3 / 4];
+		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+		int kl = _keyStr.length();
+		for(i = 0; i < kl; i++){
+			map.put(_keyStr.charAt(i), i);
+		}
+		i = 0;
+		while(i < nCount){
+			enc1 = map.get(s.charAt(i++));
+			enc2 = map.get(s.charAt(i++));
+			enc3 = map.get(s.charAt(i++));
+			enc4 = map.get(s.charAt(i++));
+
+			chr1 = (enc1 << 2) | (enc2 >> 4);
+			chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+			chr3 = ((enc3 & 3) << 6) | enc4;
+			cache[n++] = (byte)chr1;
+			if(enc3 != 64) cache[n++] = (byte)chr2;
+			if(enc4 != 64) cache[n++] = (byte)chr3;
+		}
+		return new String(cache, "UTF-8");
+	}
+
 	public static void log(Object o){
 		System.out.println(o);
 	}
@@ -80,5 +110,7 @@ JavaBase64Demo1.java
 程序中书写着所见所闻所感，编译着心中的万水千山。
 strUserEncrypt:
 SmF2YUJhc2U2NERlbW8xLmphdmEK56iL5bqP5Lit5Lmm5YaZ552A5omA6KeB5omA6Ze75omA5oSf77yM57yW6K+R552A5b+D5Lit55qE5LiH5rC05Y2D5bGx44CC
-
+strUserDecrypt:
+JavaBase64Demo1.java
+程序中书写着所见所闻所感，编译着心中的万水千山。
 */
