@@ -71,9 +71,14 @@ class JavaBase64Demo1{
 }
 
 /*
-
-Z28tYmFzZTY0LWRlbW8tMS5nbwrnqIvluo/kuK3kuablhpnnnYDmiYDop4HmiYDpl7vmiYDmhJ/vvIznvJbor5HnnYDlv4PkuK3nmoTkuIfmsLTljYPlsbHjgII=
-Z28tYmFzZTY0LWRlbW8tMS5nbwrnqIvluo/kuK3kuablhpnnnYDmiYDop4HmiYDpl7vmiYDmhJ/vvIznvJbor5HnnYDlv4PkuK3nmoTkuIfmsLTljYPlsbHjgII=
-
+JavaBase64Demo1.java
+程序中书写着所见所闻所感，编译着心中的万水千山。
+strStdEncrypt:
+SmF2YUJhc2U2NERlbW8xLmphdmEK56iL5bqP5Lit5Lmm5YaZ552A5omA6KeB5omA6Ze75omA5oSf77yM57yW6K+R552A5b+D5Lit55qE5LiH5rC05Y2D5bGx44CC
+strStdDecrypt:
+JavaBase64Demo1.java
+程序中书写着所见所闻所感，编译着心中的万水千山。
+strUserEncrypt:
+SmF2YUJhc2U2NERlbW8xLmphdmEK56iL5bqP5Lit5Lmm5YaZ552A5omA6KeB5omA6Ze75omA5oSf77yM57yW6K+R552A5b+D5Lit55qE5LiH5rC05Y2D5bGx44CC
 
 */
